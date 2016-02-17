@@ -30,6 +30,7 @@ ClassLoader::addClasses(array
 	'HeimrichHannot\TagsPlus\ModuleTagCloudPlus' => 'system/modules/tags_plus/modules/ModuleTagCloudPlus.php',
 
 	// Classes
+	'HeimrichHannot\TagsPlus\TagFieldPlus'       => 'system/modules/tags_plus/classes/TagFieldPlus.php',
 	'HeimrichHannot\TagsPlus\TagsPlus'           => 'system/modules/tags_plus/classes/TagsPlus.php',
 
 	// Models

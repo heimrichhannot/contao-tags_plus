@@ -3,7 +3,7 @@
 
 namespace HeimrichHannot\TagsPlus;
 
-class TagFieldExtended extends \Contao\TagField
+class TagFieldPlus extends \Contao\TagField
 {
 
 	public function generate()
