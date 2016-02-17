@@ -1,0 +1,33 @@
+{
+    "name": "heimrichhannot/contao-tags_plus",
+    "description":"An extension for the contao tag module offering a frontend form field among other things.",
+    "keywords":["contao", "form", "module", "developer"],
+    "type": "contao-module",
+    "homepage":"https://github.com/heimrichhannot/contao-tags_plus",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-tags_plus/issues"
+    },
+    "require": {
+        "contao/core": ">=3.2,<4-dev",
+        "contao-legacy/tags": ">=3.4"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/tags_plus"
+            }
+        }
+    }
+}
