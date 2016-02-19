@@ -383,13 +383,32 @@ class FormTags extends \Widget
 						$strOptions) . $this->addSubmit();
 	}
 
-	protected function isSelected($arrOption)
+	public static function optionSelected($strOption, $varValues)
 	{
-		if (empty($this->varValue) && empty($_POST) && $arrOption['default'])
+		if ($strOption === '')
 		{
-			return static::optionSelected(1, 1);
+			return '';
 		}
 
-		return static::optionSelected(is_array($this->varValue) ? $arrOption['label'] : $arrOption['value'], $this->varValue);
+		$strOption = urldecode($strOption);
+
+		if (is_array($varValues))
+			$varValues = array_map('urldecode', $varValues);
+		else
+			$varValues = urldecode($varValues);
+
+		$attribute = ' selected';
+
+		if (TL_MODE == 'FE')
+		{
+			global $objPage;
+
+			if ($objPage->outputFormat == 'xhtml')
+			{
+				$attribute = ' selected="selected"';
+			}
+		}
+
+		return (is_array($varValues) ? in_array($strOption, $varValues) : $strOption == $varValues) ? $attribute : '';
 	}
 }
