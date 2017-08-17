@@ -6,7 +6,49 @@ use Contao\ModuleTagCloud;
 
 class ModuleTagCloudPlus extends ModuleTagCloud
 {
-	protected function showTags()
+    /**
+     * Display a wildcard in the back end
+     * @return string
+     */
+    public function generate()
+    {
+        if (TL_MODE == 'BE')
+        {
+            $objTemplate = new BackendTemplate('be_wildcard');
+            $objTemplate->wildcard = '### TAGCLOUD ###';
+
+            return $objTemplate->parse();
+        }
+
+        $this->strTemplate = (strlen($this->cloud_template)) ? $this->cloud_template : $this->strTemplate;
+
+        $taglist = new \Contao\TagList();
+        $taglist->addNamedClass = $this->tag_named_class;
+        if (strlen($this->tag_tagtable)) $taglist->tagtable = $this->tag_tagtable;
+        if (strlen($this->tag_tagfield)) $taglist->tagfield = $this->tag_tagfield;
+        if (strlen($this->tag_sourcetables)) $taglist->fortable = deserialize($this->tag_sourcetables, TRUE);
+        if (strlen($this->tag_topten_number) && $this->tag_topten_number > 0) $taglist->topnumber = $this->tag_topten_number;
+        if (strlen($this->tag_maxtags)) $taglist->maxtags = $this->tag_maxtags;
+        if (strlen($this->tag_buckets) && $this->tag_buckets > 0) $taglist->buckets = $this->tag_buckets;
+        if (strlen($this->pagesource)) $taglist->pagesource = deserialize($this->pagesource, TRUE);
+        if ($this->tags_additionalSql) $taglist->tags_additionalSql = $this->tags_additionalSql;
+        if ($this->tags_additionalWhereSql) $taglist->tags_additionalWhereSql = $this->tags_additionalWhereSql;
+        $this->arrTags = $taglist->getTagList();
+        if ($this->tag_topten) $this->arrTopTenTags = $taglist->getTopTenTagList();
+        if (strlen(\Input::get('tag')) && $this->tag_related)
+        {
+            $relatedlist = (strlen(\Input::get('related'))) ? preg_split("/,/", \Input::get('related')) : array();
+            $this->arrRelated = $taglist->getRelatedTagList(array_merge(array(\Input::get('tag')), $relatedlist));
+        }
+        if (count($this->arrTags) < 1)
+        {
+            return '';
+        }
+        $this->toggleTagCloud();
+        return \Module::generate();
+    }
+
+    protected function showTags()
 	{
 		$this->loadLanguageFile('tl_module');
 		$strUrl = ampersand(\Environment::get('request'), ENCODE_AMPERSANDS);

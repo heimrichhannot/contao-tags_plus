@@ -26,7 +26,7 @@ TagFieldPlus | Enhances the normal tag field with the opportunity to override th
 
 Name | Description
 ---- | -----------
-ModuleTagCloudPlus | Fixes an issue in the tag cloud (active tags didn't have the "active" class)
+ModuleTagCloudPlus | Fixes an issue in the tag cloud (active tags didn't have the "active" class); additional sql and where sql can be added
 
 ### Helper classes
 

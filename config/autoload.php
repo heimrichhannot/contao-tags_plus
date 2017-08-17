@@ -3,7 +3,7 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2016 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
  * @license LGPL-3.0+
  */
@@ -23,16 +23,17 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
-	// Forms
-	'HeimrichHannot\TagsPlus\FormTags'           => 'system/modules/tags_plus/forms/FormTags.php',
-
 	// Modules
 	'HeimrichHannot\TagsPlus\ModuleTagCloudPlus' => 'system/modules/tags_plus/modules/ModuleTagCloudPlus.php',
 
-	// Classes
-	'HeimrichHannot\TagsPlus\TagFieldPlus'       => 'system/modules/tags_plus/classes/TagFieldPlus.php',
-	'HeimrichHannot\TagsPlus\TagsPlus'           => 'system/modules/tags_plus/classes/TagsPlus.php',
+	// Forms
+	'HeimrichHannot\TagsPlus\FormTags'           => 'system/modules/tags_plus/forms/FormTags.php',
 
 	// Models
 	'HeimrichHannot\TagsPlus\TagsPlusNewsModel'  => 'system/modules/tags_plus/models/TagsPlusNewsModel.php',
+
+	// Classes
+	'HeimrichHannot\TagsPlus\TagsPlus'           => 'system/modules/tags_plus/classes/TagsPlus.php',
+	'Contao\TagList'                             => 'system/modules/tags_plus/classes/TagList.php',
+	'HeimrichHannot\TagsPlus\TagFieldPlus'       => 'system/modules/tags_plus/classes/TagFieldPlus.php',
 ));
