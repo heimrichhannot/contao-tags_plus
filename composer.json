@@ -17,7 +17,7 @@
         "issues":"https://github.com/heimrichhannot/contao-tags_plus/issues"
     },
     "require": {
-        "contao/core": ">=3.2,<4-dev",
+        "contao/core-bundle": "^3.2|^4.2",
         "contao-legacy/tags": ">=3.4"
     },
     "autoload": {
