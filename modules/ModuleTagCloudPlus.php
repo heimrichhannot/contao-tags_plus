@@ -2,6 +2,7 @@
 
 namespace HeimrichHannot\TagsPlus;
 
+use Contao\BackendTemplate;
 use Contao\ModuleTagCloud;
 
 class ModuleTagCloudPlus extends ModuleTagCloud
@@ -51,7 +52,7 @@ class ModuleTagCloudPlus extends ModuleTagCloud
     protected function showTags()
 	{
 		$this->loadLanguageFile('tl_module');
-		$strUrl = ampersand(\Environment::get('request'), ENCODE_AMPERSANDS);
+        $strUrl = ampersand(\Environment::get('request'));
 		// Get target page
 		$objPageObject = $this->Database->prepare("SELECT id, alias FROM tl_page WHERE id=?")
 			->limit(1)
